@@ -1,6 +1,7 @@
 function loadContent(root, suffix, currentPage) {
 
     let objects = JSON.parse(Get(root + "/rest/ships" + suffix).responseText);
+    console.log(suffix);
     let shipsCount = Get(root + "/rest/ships/count" + suffix).responseText;
     document.getElementById("count").innerText = "Ships found: " + shipsCount;
     let table = document.getElementById("mainTable");
@@ -189,13 +190,8 @@ function processSearch(root, currentPage) {
 
     sufix += "&pageNumber=" + (+currentPage - 1);
     sufix += "&pageSize=" + +limit;
+    sufix += "&order=" + order;
 
-    console.log(limit);
-
-    if (order === "Prod year") {
-        order = "date";
-    }
-    sufix += "&order=" + order.toUpperCase();
     loadContent(root, sufix, currentPage);
 }
 
@@ -407,6 +403,7 @@ function processCreate(root) {
     body.crewSize = document.getElementById("inputCrewSizeNew").value;
 
     let response = post(root + "rest/ships/", JSON.stringify(body));
+    console.log(response.status);
     if (response.status === 200) {
         document.getElementById("inputNameNew").value = "";
         document.getElementById("inputPlanetNew").value = "";

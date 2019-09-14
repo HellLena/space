@@ -47,10 +47,10 @@
         <label style="float: left ; margin-right: 10px" for="order">Order by: </label>
         <select style="float: left" onchange="processSearch('${pageContext.request.contextPath}', 1)" style="margin-left: 5px" id="order"
                 class="form-control-sm">
-            <option selected>Id</option>
-            <option>Speed</option>
-            <option>Prod year</option>
-            <option>Rating</option>
+            <option value="ID" selected>Id</option>
+            <option value="SPEED">Speed</option>
+            <option value="DATE">Prod year</option>
+            <option value="RATING">Rating</option>
         </select>
 
 
